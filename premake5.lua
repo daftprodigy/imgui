@@ -1,9 +1,11 @@
 project "Imgui"
 	kind "StaticLib"
 	language "C++"
+	staticruntime "On"
+	cppdialect "c++17" 
 
 	targetdir (targetDirGeneral)
-    objdir (objdirGeneral)
+	objdir (objdirGeneral)
 
 	files
 	{
@@ -18,10 +20,13 @@ project "Imgui"
 		"imstb_textedit.h",
 		"imstb_truetype.h"
 	}
+	
 	filter "system:windows"
 		systemversion "latest"
-		staticruntime "On"
-		cppdialect "c++17" 
+	filter "configurations:Debug"
+		runtime "Debug"
+		symbols "on"
+
 	filter "configurations:Release"
 		runtime "Release"
 		optimize "on"
